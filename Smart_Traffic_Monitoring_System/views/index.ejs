@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Location Tracker</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js" integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-100">
+
+  <div class="fixed top-0 left-0 w-full bg-blue-600 text-white p-4 shadow-lg z-10 flex items-center justify-between">
+    <h1 class="text-xl font-semibold">Traffic Surveillance System</h1>
+    <div class="space-x-4">
+      <a href="/" class="hover:bg-blue-500 px-4 py-2 rounded-md">Home</a>
+      <a href="/about" class="hover:bg-blue-500 px-4 py-2 rounded-md">About</a>
+      <a href="/updates" class="hover:bg-blue-500 px-4 py-2 rounded-md">Updates</a>
+      <a href="/signin" class="hover:bg-blue-500 px-4 py-2 rounded-md">Sign In</a>
+      <a href="/signout" class="hover:bg-red-500 px-4 py-2 rounded-md">Sign Out</a>
+    </div>
+  </div>
+
+  <div id="map" class="fixed w-full h-[calc(100vh-64px)] mt-16"></div>
+
+  <div class="fixed bottom-0 left-0 w-full bg-gray-800 text-white py-3 px-6 flex justify-around items-center z-20">
+    <button id="realTimeTraffic" class="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">Real-Time Traffic Monitoring</button>
+    <button id="suspiciousActivity" class="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">Suspicious Activity Detection</button>
+    <button id="enhancedSafety" class="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">Enhanced Safety</button>
+    <button id="optimizedTraffic" class="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">Optimized Traffic Flow</button>
+  </div>
+
+  <div id="realTimeTrafficDialog" class="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 hidden flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-1/3">
+      <h2 class="text-xl font-semibold text-center text-blue-600">Enter Destination</h2>
+      <input type="text" id="destinationInput" class="mt-4 w-full p-2 border border-gray-300 rounded-lg" placeholder="Start typing destination..." autocomplete="off">
+      <ul id="suggestions" class="mt-2 max-h-48 overflow-y-auto border border-gray-300 rounded-lg hidden"></ul>
+      <button id="getRouteBtn" class="mt-4 w-full bg-blue-500 text-white p-2 rounded-lg">Get Route</button>
+      <button id="closeDialog" class="mt-4 w-full bg-gray-500 text-white p-2 rounded-lg">Close</button>
+    </div>
+  </div>
+
+  <button id="sosButton" class="fixed bottom-5 right-5 bg-red-600 text-white p-4 rounded-full shadow-lg hover:bg-red-700 focus:outline-none z-30">SOS</button>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
